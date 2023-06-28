@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View</title>
+</head>
+<body>
+    <h2>ID : <%=id %></h2>
+    <h3>content : <%=content[0].content%></h3>
+
+
+    <% if(fileName[0].fileName) {%>
+        <% if(fileType[0].fileType == "video/mp4") {%>
+            <video controls autoplay>
+                <source src="../../upload/<%=fileName[0].fileName%>">
+            </video>
+        <% } %>
+
+
+        <% if(fileType[0].fileType == "image/jpeg") {%>
+            <img src="../../upload/<%=fileName[0].fileName %>" alt="img">
+        <% } %>
+    <% } %>
+    
+    <br>
+    <a href="/editForm/<%=id %>">edit</a>
+    <hr>
+
+    <% for(var i = 0; i < comment.length; i++) 
+    {
+    %>
+
+    <div>
+        ID : 
+        <%=comment[i].ID %>
+        <br>
+        <%=comment[i].Comment %>
+    </div>
+    <br><br>
+    <% } %>
+    <hr>
+    <br>
+    <a href="/write/<%=id %>">writeComment</a>
+</body>
+</html>
